@@ -2,17 +2,23 @@ import { Route, Routes } from 'react-router-dom';
 import Navbar from './Components/Navbar';
 import { publicRoute } from './routes/publicRoute';
 import './App.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 
 function App() {
+  useEffect(() => {
+    AOS.init();
+  }, [])
   return (
 
-    <Navbar>
+    < Navbar >
       <Routes>
         {
           publicRoute.map(({ path, Component }) => <Route path={path} element={<Component />} />)
         }
       </Routes>
-    </Navbar>
+    </Navbar >
 
   );
 }
